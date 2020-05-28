@@ -12,13 +12,11 @@ Inventory.delete_all
 end
 
 #items table
-10.times do
-    Item.create({
-        name: Faker::Lorem.words(number: 1),
-        health: rand(-10..30),
-        attack: rand(-10..30)
-    })
-end
+Item.create({name: "LANTERN", health: 0, attack: 0})
+Item.create({name: "HEALTH POTION", health: 20, attack: 0})
+Item.create({name: "STRENGTH POTION", health: 0, attack: 20})
+Item.create({name: "THERMAL POD", health: -10, attack: 40})
+
 
 #inventories table
 10.times do
