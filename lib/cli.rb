@@ -6,7 +6,9 @@ class CLI
         self.create_new_player
 
         while true
-            puts "\nType 'info' to get a list of options. Say 'quit' to exit game."
+            # puts "\nType 'info' to get a list of options. Say 'quit' to exit game."
+            sleep(0.25)
+            puts "    "
             puts "What would you like to do?"
             input = gets.chomp
 
@@ -14,6 +16,8 @@ class CLI
 
             case input
             when "info"
+                self.info
+            when "help"
                 self.info
             when "inspect"
                 self.inspect_player
@@ -63,9 +67,6 @@ end
     end
         
     def info
-        sleep(0.25)
-        puts "    "
-        puts "What would you like to do?"
         sleep(0.25)
         puts "    "
                 # future todo: puts "You can say 'create' to create new player"
