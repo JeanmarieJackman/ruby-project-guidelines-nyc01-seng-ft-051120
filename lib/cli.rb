@@ -204,7 +204,7 @@ end
         inventory.item_id = 40
         inventory.player_id = Player.last.id
         inventory.save
-        puts "You have added a lantern to your inventory"
+        puts "You have added a health potion to your inventory"
     end
     
     def add_strength_potion_to_inventory
@@ -212,7 +212,7 @@ end
         inventory.item_id = 41
         inventory.player_id = Player.last.id
         inventory.save
-        puts "You have added a lantern to your inventory"
+        puts "You have added a strength potion to your inventory"
     end
 
     def add_thermal_pod_to_inventory
@@ -220,7 +220,7 @@ end
         inventory.item_id = 42
         inventory.player_id = Player.last.id
         inventory.save
-        puts "You have added a lantern to your inventory"
+        puts "You have added a thermal pood to your inventory"
     end
 
     # A User can view a list of their inventory items
@@ -303,7 +303,7 @@ end
         player = Player.last
         player.update(health: 0, attack_power: 60)
         player.save
-        puts "You have melted the wizard"
+        puts "The Thermal Pod melts the wizard. His shrieks of pain shake the cave. You win!"
     # else
     #     #if item in inventory = false
     #     puts "You are fozen..."
@@ -331,7 +331,7 @@ end
         puts "  "
         sleep(0.25)
         while true
-            puts "Which way do you want to go? (E/W)"
+            puts "Which way do you want to go? (W/E)"
             input = gets.chomp
 
             break if input == "quit" || input == "exit"
@@ -341,10 +341,15 @@ end
             when 'W'
                 puts "You crawl into the tunnel. Nasty cobwebs above you, and your hands feel the'"
                 puts "slimy, cold, roughness of the cavern floor. LOOK. You see a LANTERN. "
+                puts "Take lantern? or keep moving...somethings crawling on you!"
+                puts "Type 'take' to grab that lantern, or just go South or East"
+                puts "using the command prompt below:"
 
                 until input == 'E'
-                    puts "What do you want to do? "
-                    puts "Take lantern? or keep moving...somethings crawling on you! (take/S/E)"
+                    sleep(0.01)
+                    puts "   "
+                    sleep(0.01)
+                    puts "What do you want to do? (take/S/E)"
                     input = gets.chomp
         
                     break if input == "quit" || input == "exit"
@@ -356,28 +361,51 @@ end
                         puts "there is nothing else here. Ahead of you, there seems to be a very"
                         puts "dark pit room. No choice now! At least you'll be out of this tunnel,"
                         puts "and up on your feet again, soon! You head South into the pit room."
-                        self.add_lantern_to_inventory
+                        add_lantern_to_inventory
                         next
                     when 'S'
                         puts "So, this is a trade-off, to say the least! You can stand up now in this'"
                         puts "pit room, but you cannot see your hands in front of your face!! Did"
-                        puts "you take that Lantern?"
-                        puts "next....passageway to the East***"
-                        puts "You find yourself in the passageway. LOOK! You see something glimmering"
-                        puts "....."
+                        puts "you take that Lantern?  Good thing you did!!"
+                        puts "You find yourself in the pit room. LOOK! You see something glimmering"
+                        puts "You see a glass vial, glowing green in the dank, darkness of the "
+                        sleep(0.01)
+                        puts "pit. It seems to contain a POTION of some sort. AHA!! It’s a green potion "
+                        sleep(0.01)
+                        puts "of life, this will increase your Health if used just before battle!!  "
+                        sleep(0.01)
+                        puts "(get)  will add this to your INVENTORY."
+                        sleep(0.01)
+                        puts "   "
+                        sleep(0.01)
+                        i = gets.chomp
+                        if i == "get"
+    
                         puts
+                        add_health_potion_to_inventory
                         break
+                        end
                     end
                 end
             when 'E' 
-                puts "You find yourself in the passageway. LOOK! You see something glimmering"
-                puts "....."
-                puts "what do you want to do (throw)"
+                puts "You are standing in the cavern of the Evil Wizard. All around you"
+                sleep(0.01)
+                puts "are the carcasses of slain ice dwarves. "
+                sleep(0.01)
+                puts "When the wizard appears, MELT WIZARD. How do you want to"
+                sleep(0.01)
+                puts "melt the wizard? (throw thermal pod)"
+                sleep(0.01)
+                puts "   "
+                sleep(0.01)
+                
                 input = gets.chomp
-                if input == "throw"
+                if input== "throw thermal pod"
                     throw_thermal_pod
+                    system "clear"
                 end
                 break
+               puts "\quit"
             end
         end
     end
