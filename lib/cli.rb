@@ -136,6 +136,10 @@ end
     def player
         player = Player.last
     end
+
+    def player_id
+        player_id = Player.last.id
+    end
         
     def info
         sleep(0.25)
@@ -195,10 +199,11 @@ end
 
     def add_lantern_to_inventory
         inventory = Inventory.new
-        inventory.item_id = 01
+        inventory.item_id = 39
+        inventory.player_id = Player.last.id
         inventory.save
         puts "You have added a lantern to your inventory"
-        end
+    end
 
     # A User can play the game
 
