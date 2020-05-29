@@ -4,6 +4,8 @@ require 'yaml/store'
 require 'ostruct'
 require 'date'
 require 'tty-prompt'
+require 'paint'
+require 'colorize'
 
 require 'bundler/setup'
 Bundler.require
