@@ -1,8 +1,12 @@
 class CLI
 
     def run
-        pid = fork{ exec 'afplay', "/Users/jeanmariejackman/Development/code/Mod1/project/ruby-project-guidelines-nyc01-seng-ft-051120/lib/POL-reach-the-sky-short.wav" }
-        self.greeting 
+        # pid = fork{ exec 'afplay', "/Users/jeanmariejackman/Development/code/Mod1/project/ruby-project-guidelines-nyc01-seng-ft-051120/lib/POL-reach-the-sky-short.wav" }
+        # self.greeting 
+###need to require yes or no before moving to create player
+###
+###need method to validate player_exist_in_db? if no, create_player,
+###     if in db is true, puts "welcome back #{player.name}"
         self.create_new_player
         while true
             # puts "\nType 'info' to get a list of options. Say 'quit' to exit game."
@@ -82,6 +86,24 @@ end
         puts " "
         puts " "
         puts "Welcome to Cavern of the Ice Wizard!!  Would you like instructions?"
+        reply = gets.chomp
+        if reply.downcase == "yes"
+            puts " "
+            sleep(0.25)
+            puts " "
+            puts "The story begins at the entrance of a dark cave. Legend holds that an evil Ice Wizard lurks deep within the cavern,"
+            puts "with all the gold and treasure that he has plundered from many an unsuspecting traveller. If you defeat the Wizard,"
+            puts "you will claim ALL the treasure and WIN the game. However, many have tried, and were not seen again for a thousand years!"
+            puts "Go forth! But be stealthy, attentive, and prudent in your decisions. You can move through the game with simple one- or"
+            puts "two-word commands, such as: LOOK, GET, USE, GO NORTH, or USE ITEM. At any time during your journey, type “info” to get"
+            puts "information on how to continue your journey"
+            puts " "
+            puts "You are standing at the entrance of a dark cave..."
+        elsif reply.downcase == "no"
+            puts "You are standing at the entrance of a dark cave..."
+        # else 
+        #     puts "Please answer yes or no. Would you like instructions?"
+        end
     end
     # A User can create and save a Player
     def create_new_player
@@ -96,7 +118,6 @@ end
         puts "Welcome #{name}"
         sleep(0.25)
         puts "    "
-        # info    
     end
 
     def name
@@ -133,28 +154,37 @@ end
         puts "    "
         puts "Report:  #{name}, you have #{health} health, and #{strength} attack points"            
     end
-
+    
+    ## A User can delete a Player
     def delete_player
-        puts "Are you sure you want to delete this player?"
-        answer = gets.chomp
-        if answer.downcase == "yes"
-        # puts "Do you really want to delete this player and quit this round?"
-        # response = gets.chomp
-        # if response.downcase == "yes"
-            player.delete
-            puts "You have deleted this player!"
-            #need method for create new? or exit game?
-            
-        else 
-            puts "What would you like to do?"
-                #needs to return to a menu of choices( go, inspect, get item, delete, quit)
-            info
+        while true
+            puts "Are you sure you want to delete this player? (y/n)"
+            input = gets.chomp
+
+            # break if input == "quit" || input == "exit"
+
+            case input
+            when 'n'
+                self.info 
+                break
+            when 'y'
+                puts "To create a new player, type 'new'"
+                puts "or to leave the game now, type 'quit', then type 'quit' again at the prompt."
+            when "new"
+                player.delete
+                puts "You have deleted this player!"
+                puts "You can now create a new player name"
+                self.create_new_player
+                self.info
+                break
+            else
+                puts "Oops, I don't understand, try again."
+            end
         end
     end
 
 
 
-    # A User can delete a Player
 
     # A User can play the game
     def enter_game
@@ -191,7 +221,8 @@ end
     #   update player attributes, by adding health and strength value from the item, 
     #   and also, will then delete the item from inventory
 
-    def exit_game
+    def end_game
+        system "clear"
         puts "Thank you for playing!"
         puts "Come again soon!"
     end
