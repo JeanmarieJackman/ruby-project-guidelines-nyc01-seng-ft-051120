@@ -394,6 +394,47 @@ end
                 sleep(0.01)
                 puts "When the wizard appears, MELT WIZARD. How do you want to"
                 sleep(0.01)
+                puts "  "
+                sleep(0.25)
+                puts "  "
+                sleep(0.25)
+                puts "                               XX                                   ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                                 XX                                 ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                               _ XX                                 ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                            .' . XX '.                              ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                           '_ '_XX_'  `_                            ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                           .  . XX  .  .                            ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                          .  . XX  .  .                             ".colorize(:white).colorize( :background => :black)
+                sleep(0.25)
+                puts "                         .==. ` XX' .'                              ".colorize(:ight_blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                  .Y|   (|bd|)   X,                                 ".colorize(:ight_blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                  Y_'`._(|__|)_.'`.;                                ".colorize(:ight_blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                    `.__      __,' XX                               ".colorize(:ight_blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                        |    |      XX                              ".colorize(:ight_blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                        |    |       `                              ".colorize(:ight_blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                        |    |                                      ".colorize(:blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                        |    |                                      ".colorize(:blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                        |____|                                      ".colorize(:blue).colorize( :background => :black)
+                sleep(0.25)
+                puts "                       =='  '==                                     ".colorize(:blue).colorize( :background => :black)
+                puts "  "
+                sleep(0.25)
+                puts "  "
+                sleep(0.25)
                 puts "melt the wizard? (throw thermal pod)"
                 sleep(0.01)
                 puts "   "
@@ -402,10 +443,10 @@ end
                 input = gets.chomp
                 if input== "throw thermal pod"
                     throw_thermal_pod
-                    system "clear"
+                    puts "thank you for playing!!"
+                    puts "type 'quit' to exit"
                 end
                 break
-               puts "\quit"
             end
         end
     end
