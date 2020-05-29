@@ -2,11 +2,11 @@ class CLI
 
     def run
         system "clear"
-        self.greeting 
-###need to require yes or no before moving to create player
-###
-###need method to validate player_exist_in_db? if no, create_player,
-###     if in db is true, puts "welcome back #{player.name}"
+        #self.greeting 
+                ###need to require yes or no before moving to create player
+                ###
+                ###need method to validate player_exist_in_db? if no, create_player,
+                ###     if in db is true, puts "welcome back #{player.name}"
         self.create_new_player
         while true
             # puts "\nType 'info' to get a list of options. Say 'quit' to exit game."
@@ -190,12 +190,6 @@ end
     end
 
     # A User can have many items in their inventory,
-#   gets or takes item will add it to inventory
-    #   and return a message saying "you have added <item> to inventory"
-    #   and also "when you use this <item>, it will update your health by <value>
-    #   and your attack points by <value>. This item can be used only once.
-    #   After that it will no longer be in your inventory"
-   
 
     def add_lantern_to_inventory
         inventory = Inventory.new
@@ -204,6 +198,117 @@ end
         inventory.save
         puts "You have added a lantern to your inventory"
     end
+
+    def add_health_potion_to_inventory
+        inventory = Inventory.new
+        inventory.item_id = 40
+        inventory.player_id = Player.last.id
+        inventory.save
+        puts "You have added a lantern to your inventory"
+    end
+    
+    def add_strength_potion_to_inventory
+        inventory = Inventory.new
+        inventory.item_id = 41
+        inventory.player_id = Player.last.id
+        inventory.save
+        puts "You have added a lantern to your inventory"
+    end
+
+    def add_thermal_pod_to_inventory
+        inventory = Inventory.new
+        inventory.item_id = 42
+        inventory.player_id = Player.last.id
+        inventory.save
+        puts "You have added a lantern to your inventory"
+    end
+
+    # A User can view a list of their inventory items
+    #       will return an array of hashes?
+    #       []
+
+    # def view_inventory
+    # end
+    
+    # A User can inspect an item
+    #   which returns a message saying the health and strength points
+    #   and also "when you use this <item>, it will update your health by <value>
+    #   and your attack points by <value>. This item can be used only once.
+    #   After that it will no longer be in your inventory"
+
+    # def inspect_item
+    # end
+
+    # A User can use an item from inventory, which will
+    #   update player attributes, by adding health and strength value from the item, 
+    #   and also, will then delete the item from inventory
+
+    # def use_lantern
+    #     #item = Inventory.find_by ???
+    #     inventory.item_id = 39
+    #     #item.delete
+    #     #inventory.update? or inventory.save?
+    #     puts "You can see! There is something glinting in the darkness"
+    #     puts "It looks like a green vial of health potion!"
+    # end
+
+    # def use_health_potion
+    #     #item = Inventory.find_by ???
+    #     inventory.item_id = 40
+    #     #item.delete
+    #     #player update health +20
+    #     #inventory.update? or inventory.save?
+    #     puts "You have consumed the potion and received +20 health"
+    # end
+    
+    # def use_strength_potion
+    #     #item = Inventory.find_by ???
+    #     inventory.item_id = 41
+    #     #item.delete
+    #     #player update strength +20
+    #     #inventory.update? or inventory.save?
+    #     puts "You have consumed the potion and received +20 attack points"
+    # end
+
+    # def players_inventory
+    #     Inventory.all.select do |inventory|
+    #         inventory.player == self
+    #         inventory
+    #     end
+    # end
+
+    # def id
+    #     id = player.id
+    # end
+
+    # def players_inventory
+    #     players_inventory = Inventory.all.where(id: id)
+    #     players_inventory
+    #     end
+    # end
+
+    # def players_inventory
+    #     player = Player.last
+    #     id = player.id
+    # end
+
+    def throw_thermal_pod
+        #item = Inventory.find_by
+        # inventory.item_id = 42
+        #player update health -20
+    #     item = Inventory.find_by
+        
+    # if
+        #oif item in inventory = true 
+        player = Player.last
+        player.update(health: 0, attack_power: 60)
+        player.save
+        puts "You have melted the wizard"
+    # else
+    #     #if item in inventory = false
+    #     puts "You are fozen..."
+    end
+
 
     # A User can play the game
 
@@ -226,7 +331,7 @@ end
         puts "  "
         sleep(0.25)
         while true
-            puts "Which way do you want to go? (S/W)"
+            puts "Which way do you want to go? (E/W)"
             input = gets.chomp
 
             break if input == "quit" || input == "exit"
@@ -237,16 +342,15 @@ end
                 puts "You crawl into the tunnel. Nasty cobwebs above you, and your hands feel the'"
                 puts "slimy, cold, roughness of the cavern floor. LOOK. You see a LANTERN. "
 
-                loop do
+                until input == 'E'
                     puts "What do you want to do? "
-                    puts "Take lantern? or keep moving...somethings crawling on you! (take/S)"
+                    puts "Take lantern? or keep moving...somethings crawling on you! (take/S/E)"
                     input = gets.chomp
         
                     break if input == "quit" || input == "exit"
 
                     case input
                     when 'take' 
-###need method to add item to inventory here!    
                         puts "You take the lantern, and add it to your inventory. Thinking, this"
                         puts "could be useful if it keeps getting darker! Looking around, you see"
                         puts "there is nothing else here. Ahead of you, there seems to be a very"
@@ -265,10 +369,14 @@ end
                         break
                     end
                 end
-            when 'S' 
+            when 'E' 
                 puts "You find yourself in the passageway. LOOK! You see something glimmering"
                 puts "....."
-                puts
+                puts "what do you want to do (throw)"
+                input = gets.chomp
+                if input == "throw"
+                    throw_thermal_pod
+                end
                 break
             end
         end
@@ -277,11 +385,8 @@ end
 
 
 
-    # A User can view a list of their inventory items
-
-    # A User can use an item from inventory, which will
-    #   update player attributes, by adding health and strength value from the item, 
-    #   and also, will then delete the item from inventory
+    
 
 
 end
+
