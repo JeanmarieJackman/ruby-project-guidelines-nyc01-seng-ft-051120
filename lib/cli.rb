@@ -185,30 +185,23 @@ end
         end
     end
 
+    # A User can have many items in their inventory,
+#   gets or takes item will add it to inventory
+    #   and return a message saying "you have added <item> to inventory"
+    #   and also "when you use this <item>, it will update your health by <value>
+    #   and your attack points by <value>. This item can be used only once.
+    #   After that it will no longer be in your inventory"
+   
 
-
+    def add_lantern_to_inventory
+        inventory = Inventory.new
+        inventory.item_id = 01
+        inventory.save
+        puts "You have added a lantern to your inventory"
+        end
 
     # A User can play the game
-            # def enter_game
-            #     puts "You have entered the cave text...etc"
-            #     puts "interior cave text"
-            #     puts "  "
-            #     puts "You see a passage and a tunnel"
-            #     puts "What would you like to do?"
-            #     reply = gets.chomp
-            #     if reply.downcase == "passage"
-            #         puts "you enter the passage"
-            #     elsif
-            #         reply.downcase == "tunnel"
-            #         puts "you enter the tunnel"
-            #     else
-            #         puts "sorry, I didn't understand"
-            #         puts "please type 'passage' or 'tunnel' to continue the game"
-            #         puts "or type 'exit' to quit the game"
-            #         info
-            #         #need to create loop error message
-            #     end
-            # end
+
     def enter_game
         puts "You have entered the cave. Dim light filters in from outdoors."
         sleep(0.01)
@@ -254,6 +247,7 @@ end
                         puts "there is nothing else here. Ahead of you, there seems to be a very"
                         puts "dark pit room. No choice now! At least you'll be out of this tunnel,"
                         puts "and up on your feet again, soon! You head South into the pit room."
+                        self.add_lantern_to_inventory
                         next
                     when 'S'
                         puts "So, this is a trade-off, to say the least! You can stand up now in this'"
@@ -277,24 +271,6 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-    
-
-    # A User can have many items in their inventory,
-    #   gets or takes item will add it to inventory
-        #   and return a message saying "you have added <item> to inventory"
-        #   and also "when you use this <item>, it will update your health by <value>
-        #   and your attack points by <value>. This item can be used only once.
-        #   After that it will no longer be in your inventory"
 
     # A User can view a list of their inventory items
 
