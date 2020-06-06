@@ -1,8 +1,10 @@
+
 class CLI
 
     def run
         system "clear"
-        #self.greeting 
+        
+        self.greeting 
                 ###need to require yes or no before moving to create player
                 ###
                 ###need method to validate player_exist_in_db? if no, create_player,
@@ -36,54 +38,34 @@ class CLI
     end
 end  
 
+
+    def load_art(filename, color_me)
+        fg = nil
+        bg = nil
+        file = File.open("./lib/resources/" + filename)
+        file.readlines.map.with_index do |line, i|
+            # check for a key in color_me hash equal to the current index
+            if color_me.has_key? i+1
+                # if key exists, then set fg and bg to values at hash key
+                fg = color_me[i+1][:fg]
+                bg = color_me[i+1][:bg]
+            end
+            
+            puts line.chomp.colorize(fg).colorize( :background => bg)
+        end
+    end
+
+
+   
+
+
+
+
     def greeting
-        pid = fork{ exec 'afplay', "/Users/jeanmariejackman/Development/code/Mod1/project/ruby-project-guidelines-nyc01-seng-ft-051120/lib/POL-reach-the-sky-short.wav" }
-        system "clear"
-        puts ""                                                                                                                     
-        puts "     _____                                    __   _   _            _____          __          ___                  _ ".colorize(:light_blue)
-        puts "    / ____|                                  / _| | | | |          |_   _|         X X        / (_)                | |".colorize(:light_blue)
-        sleep(0.25)
-        puts "   | |     __ ___   _____ _ __ _ __     ___ | |_  | |_| |__   ___    | |  ___ ___   X X  /X  / / _ ______ _ _ __ __| |".colorize(:light_blue)
-        sleep(0.25)
-        puts "   | |    / _` X X / / _ X '__| '_ X   / _ X|  _| | __| '_ X / _ X   | | / __/ _ X   X X/  X/ / | |_  / _` | '__/ _` |".colorize(:light_blue)
-        sleep(0.25)
-        puts "   | |___| (_| |X V /  __/ |  | | | | | (_) | |   | |_| | | |  __/  _| || (_|  __/    X  /X  /  | |/ / (_| | | | (_| |".colorize(:light_blue)
-        sleep(0.25)
-        puts "    X_____X__,_| X_/ X___|_|  |_| |_|  X___/|_|    X__|_| |_|X___| |_____X___X___|     X/  X/   |_/___X__,_|_|  X__,_|".colorize(:light_blue)
-        puts " "
-        puts " "
-        puts " "
-        puts " "
-        puts "                                            /'X                                                                        ".colorize(:white).colorize( :background => :black)
-        sleep(0.25)
-        puts "                                           /   X              /'X       _                                              ".colorize(:white).colorize( :background => :black)
-        sleep(0.25)
-        puts "                                      /'.,/     X_         .,'   X     / X_                                            ".colorize(:white).colorize( :background => :black)
-        sleep(0.25)
-        puts "                                     /            X      _/       X_  /    X     _                                     ".colorize(:light_blue).colorize( :background => :black)
-        sleep(0.25)
-        puts "                            X__,.   /              X    /           X/.,   _|  _/ X                                    ".colorize(:light_blue).colorize( :background => :black)
-        sleep(0.25)
-        puts "                           /     X_/                X  /',.,''X      X_ X_/  X/    X                                   ".colorize(:light_blue).colorize( :background => :black)
-        sleep(0.25)
-        puts "                           |                      _  X/   /    ',../',.X    _/      X                                  ".colorize(:light_blue).colorize( :background => :black)
-        sleep(0.25)
-        puts "                          /         /           _XmX  X  /    |         X  /.,/'X   _X                                 ".colorize(:light_cyan).colorize( :background => :black)
-        sleep(0.25)
-        puts "                         /        _/           XMMmmX  X_     |          X/      X_/  X                                ".colorize(:light_cyan).colorize( :background => :black)
-        sleep(0.25)
-        puts "                        /        /      X     XMMMMmmX   X__   X          X_       X   X_                              ".colorize(:light_cyan).colorize( :background => :black)
-        sleep(0.25)
-        puts "                       /        /        X   XMMMMMMmX      X   X           X       X    X                             ".colorize(:cyan).colorize( :background => :black)
-        sleep(0.25)
-        puts "                     _/        /          X  XMMMMMMmmX      X___            X_      X_   X                            ".colorize(:cyan).colorize( :background => :black)
-        sleep(0.25)
-        puts "                    /         /            XXMMMMMMMMmmX____.'  /X_            X       X   X_                          ".colorize(:cyan).colorize( :background => :black)
-        sleep(0.25)
-        puts "   ________________/_________/             /'.,___________...,,'   X            X   X        X________________________ ".colorize(:cyan).colorize( :background => :black)
-        puts " "
-        puts " "
-        sleep(0.25)
+        # pid = fork{ exec 'afplay', "/Users/jeanmariejackman/Development/code/Mod1/project/ruby-project-guidelines-nyc01-seng-ft-051120/lib/POL-reach-the-sky-short.wav" }
+        
+        
+        self.load_art("greeting_art.txt", ::AsciiColors::GREETING_COLORS )
         puts " "
         puts " "
         puts "Welcome to Cavern of the Ice Wizard!!  Would you like instructions?"
@@ -366,8 +348,8 @@ end
                     when 'S'
                         puts "So, this is a trade-off, to say the least! You can stand up now in this'"
                         puts "pit room, but you cannot see your hands in front of your face!! Did"
-                        puts "you take that Lantern?  Good thing you did!!"
-                        puts "You find yourself in the pit room. LOOK! You see something glimmering"
+                        puts "you take that Lantern?  Good thing you did!! Now we can see!!"
+                        puts "LOOK! You see something glimmering"
                         puts "You see a glass vial, glowing green in the dank, darkness of the "
                         sleep(0.01)
                         puts "pit. It seems to contain a POTION of some sort. AHA!! It’s a green potion "
