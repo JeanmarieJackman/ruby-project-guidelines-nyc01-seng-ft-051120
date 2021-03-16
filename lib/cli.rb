@@ -252,12 +252,12 @@ end
     #     puts "You have consumed the potion and received +20 attack points"
     # end
 
-    def players_inventory
-        Inventory.all.select do |inventory|
-            inventory.player == self
-            inventory
-        end
-    end
+    # def players_inventory
+    #     Inventory.all.select do |inventory|
+    #         inventory.player == self
+    #         inventory
+    #     end
+    # end
 
     # def id
     #     id = player.id
@@ -275,7 +275,7 @@ end
     # end
 
     def throw_thermal_pod
-        #item = Inventory.find_by
+        item = Inventory.find_by
         # inventory.item_id = 42
         #player update health -20
     #     item = Inventory.find_by
