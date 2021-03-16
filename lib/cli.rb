@@ -127,7 +127,7 @@ end
         sleep(0.25)
         puts "    "
                 # future todo: puts "You can say 'create' to create new player"
-                future todo: puts "You can say 'log in' to enter your player name and start a new game"
+                # future todo: puts "You can say 'log in' to enter your player name and start a new game"
         puts "You can say 'inspect' to inspect your player stats"
         puts "You can say 'go' to enter the game"
         puts "You can say 'delete' to delete your most recently created player and start over"
@@ -209,7 +209,7 @@ end
     #       will return an array of hashes?
     #       []
 
-    # def view_inventory
+    def view_inventory
     # end
     
     # A User can inspect an item
