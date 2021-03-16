@@ -275,9 +275,9 @@ end
     # end
 
     def throw_thermal_pod
-        item = Inventory.find_by
+        # item = Inventory.find_by
         # inventory.item_id = 42
-        #player update health -20
+        player update health -20
     #     item = Inventory.find_by
         
     # if
