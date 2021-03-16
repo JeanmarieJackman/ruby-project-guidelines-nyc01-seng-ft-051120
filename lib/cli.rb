@@ -218,14 +218,14 @@ end
     #   and your attack points by <value>. This item can be used only once.
     #   After that it will no longer be in your inventory"
 
-    def inspect_item
-    end
+    # def inspect_item
+    # end
 
     # A User can use an item from inventory, which will
     #   update player attributes, by adding health and strength value from the item, 
     #   and also, will then delete the item from inventory
 
-    # def use_lantern
+    def use_lantern
     #     #item = Inventory.find_by ???
     #     inventory.item_id = 39
     #     #item.delete
