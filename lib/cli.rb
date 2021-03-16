@@ -225,7 +225,7 @@ end
     #   update player attributes, by adding health and strength value from the item, 
     #   and also, will then delete the item from inventory
 
-    def use_lantern
+    # def use_lantern
     #     #item = Inventory.find_by ???
     #     inventory.item_id = 39
     #     #item.delete
@@ -234,14 +234,14 @@ end
     #     puts "It looks like a green vial of health potion!"
     # end
 
-    # def use_health_potion
-    #     #item = Inventory.find_by ???
-    #     inventory.item_id = 40
-    #     #item.delete
-    #     #player update health +20
-    #     #inventory.update? or inventory.save?
-    #     puts "You have consumed the potion and received +20 health"
-    # end
+    def use_health_potion
+        #item = Inventory.find_by ???
+        inventory.item_id = 40
+        #item.delete
+        #player update health +20
+        #inventory.update? or inventory.save?
+        puts "You have consumed the potion and received +20 health"
+    end
     
     # def use_strength_potion
     #     #item = Inventory.find_by ???
