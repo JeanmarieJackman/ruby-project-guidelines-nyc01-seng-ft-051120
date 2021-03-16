@@ -209,14 +209,14 @@ end
     #       will return an array of hashes?
     #       []
 
-    def view_inventory
+    # def view_inventory
     # end
     
     # A User can inspect an item
     #   which returns a message saying the health and strength points
-    #   and also "when you use this <item>, it will update your health by <value>
-    #   and your attack points by <value>. This item can be used only once.
-    #   After that it will no longer be in your inventory"
+      and also "when you use this <item>, it will update your health by <value>
+      and your attack points by <value>. This item can be used only once.
+      After that it will no longer be in your inventory"
 
     # def inspect_item
     # end
