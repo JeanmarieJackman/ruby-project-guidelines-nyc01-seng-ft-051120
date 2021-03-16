@@ -243,21 +243,21 @@ end
     #     puts "You have consumed the potion and received +20 health"
     # end
     
-    def use_strength_potion
-        #item = Inventory.find_by ???
-        inventory.item_id = 41
-        #item.delete
-        #player update strength +20
-        #inventory.update? or inventory.save?
-        puts "You have consumed the potion and received +20 attack points"
-    end
-
-    # def players_inventory
-    #     Inventory.all.select do |inventory|
-    #         inventory.player == self
-    #         inventory
-    #     end
+    # def use_strength_potion
+    #     #item = Inventory.find_by ???
+    #     inventory.item_id = 41
+    #     #item.delete
+    #     #player update strength +20
+    #     #inventory.update? or inventory.save?
+    #     puts "You have consumed the potion and received +20 attack points"
     # end
+
+    def players_inventory
+        Inventory.all.select do |inventory|
+            inventory.player == self
+            inventory
+        end
+    end
 
     # def id
     #     id = player.id
