@@ -126,7 +126,7 @@ end
     def info
         sleep(0.25)
         puts "    "
-                # future todo: puts "You can say 'create' to create new player"
+                future todo: puts "You can say 'create' to create new player"
                 # future todo: puts "You can say 'log in' to enter your player name and start a new game"
         puts "You can say 'inspect' to inspect your player stats"
         puts "You can say 'go' to enter the game"
